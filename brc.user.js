@@ -46,338 +46,345 @@ var bcModSdk=function(){"use strict";const e="1.1.0";function o(e){alert("Mod ER
 
 async function BRC_Main() {
 
-	const modApi = bcModSdk.registerMod({
-	name: 'BRC',
-	fullName: 'Better Remote Control',
-	version: BRC_Version,
-	repository: 'https://github.com/itsFro/BRC/',
-});
+    const modApi = bcModSdk.registerMod({
+        name: 'BRC',
+        fullName: 'Better Remote Control',
+        version: BRC_Version,
+        repository: 'https://github.com/itsFro/BRC/',
+    });
 
     let brcSettings = {};
- //await waitFor(() => ServerIsConnected);
- BRCCommands();
- chatRoomOverlay();
+    //await waitFor(() => ServerIsConnected);
+    BRCCommands();
+    chatRoomOverlay();
 
-    	function chatRoomOverlay() {
-		modApi.hookFunction(
-			"ChatRoomDrawCharacterOverlay", 3, (args, next) => {
-                 if (showhide == 1){
-                DrawButton(1000, 830, 60, 60, "V - Off", "#ceffce", "", "");
-                DrawButton(1000, 760, 60, 60, "V - Low", "#ccf79a", "", "");
-                DrawButton(1000, 690, 60, 60, "V - Mid", "#f2f5a5", "", "");
-                DrawButton(1000, 620, 60, 60, "V - High", "#f9d198", "", "");
-                DrawButton(1000, 550, 60, 60, "V - Max", "#f6bbbb", "", "");
+    function chatRoomOverlay() {
+        modApi.hookFunction(
+            "ChatRoomDrawCharacterOverlay", 3, (args, next) => {
+                if (showhide == 1) {
+                    DrawButton(1000, 830, 60, 60, "V - Off", "#ceffce", "", "");
+                    DrawButton(1000, 760, 60, 60, "V - Low", "#ccf79a", "", "");
+                    DrawButton(1000, 690, 60, 60, "V - Mid", "#f2f5a5", "", "");
+                    DrawButton(1000, 620, 60, 60, "V - High", "#f9d198", "", "");
+                    DrawButton(1000, 550, 60, 60, "V - Max", "#f6bbbb", "", "");
 
-                DrawButton(1000, 400, 60, 60, "B - Off", "#ceffce", "", "");
-                DrawButton(1000, 330, 60, 60, "B - Low", "#ccf79a", "", "");
-                DrawButton(1000, 260, 60, 60, "B - Mid", "#f2f5a5", "", "");
-                DrawButton(1000, 190, 60, 60, "B - High", "#f9d198", "", "");
-                DrawButton(1000, 120, 60, 60, "B - Max", "#f6bbbb", "", "");
-
-                 }
-
-                  next(args);
+                    DrawButton(1000, 400, 60, 60, "B - Off", "#ceffce", "", "");
+                    DrawButton(1000, 330, 60, 60, "B - Low", "#ccf79a", "", "");
+                    DrawButton(1000, 260, 60, 60, "B - Mid", "#f2f5a5", "", "");
+                    DrawButton(1000, 190, 60, 60, "B - High", "#f9d198", "", "");
+                    DrawButton(1000, 120, 60, 60, "B - Max", "#f6bbbb", "", "");
+                }
+                next(args);
             });
-       		modApi.hookFunction(
-			"ChatRoomClick", 4, (args, next) => {
-if (showhide == 1){
-if(MouseIn(1000, 830, 60, 60)) {
-settoyu_vulv(0);
-return;
-}
-if(MouseIn(1000, 760, 60, 60)) {
-settoyu_vulv(1);
-return;
-}
-if(MouseIn(1000, 690, 60, 60)) {
-settoyu_vulv(2);
-return;
-}
-if(MouseIn(1000, 620, 60, 60)) {
-settoyu_vulv(3);
-return;
-}
-if(MouseIn(1000, 550, 60, 60)) {
-settoyu_vulv(4);
-return;
-}
+        modApi.hookFunction(
+            "ChatRoomClick", 4, (args, next) => {
+                if (showhide == 1) {
+                    if (MouseIn(1000, 830, 60, 60)) {
+                        settoyu_vulv(0);
+                        return;
+                    }
+                    if (MouseIn(1000, 760, 60, 60)) {
+                        settoyu_vulv(1);
+                        return;
+                    }
+                    if (MouseIn(1000, 690, 60, 60)) {
+                        settoyu_vulv(2);
+                        return;
+                    }
+                    if (MouseIn(1000, 620, 60, 60)) {
+                        settoyu_vulv(3);
+                        return;
+                    }
+                    if (MouseIn(1000, 550, 60, 60)) {
+                        settoyu_vulv(4);
+                        return;
+                    }
 
-if(MouseIn(1000, 400, 60, 60)) {
-settoyu_butt(0);
-return;
-}
-if(MouseIn(1000, 330, 60, 60)) {
-settoyu_butt(1);
-return;
-}
-if(MouseIn(1000, 260, 60, 60)) {
-settoyu_butt(2);
-return;
-}
-if(MouseIn(1000, 190, 60, 60)) {
-settoyu_butt(3);
-return;
-}
-if(MouseIn(1000, 120, 60, 60)) {
-settoyu_butt(4);
-return;
-}
-}
-                  next(args);
+                    if (MouseIn(1000, 400, 60, 60)) {
+                        settoyu_butt(0);
+                        return;
+                    }
+                    if (MouseIn(1000, 330, 60, 60)) {
+                        settoyu_butt(1);
+                        return;
+                    }
+                    if (MouseIn(1000, 260, 60, 60)) {
+                        settoyu_butt(2);
+                        return;
+                    }
+                    if (MouseIn(1000, 190, 60, 60)) {
+                        settoyu_butt(3);
+                        return;
+                    }
+                    if (MouseIn(1000, 120, 60, 60)) {
+                        settoyu_butt(4);
+                        return;
+                    }
+                }
+                next(args);
             });
 
-       		modApi.hookFunction(
-			"ChatRoomResize", 11, (args, next) => {
+        modApi.hookFunction(
+            "ChatRoomResize", 11, (args, next) => {
 
-	if (
-		CharacterGetCurrent() == null
-		&& CurrentScreen == "ChatRoom"
-		&& document.getElementById("InputChat")
-		&& document.getElementById("TextAreaChatLog")
-	) {
-        if (showhide == 1){
-		ElementPositionFix("TextAreaChatLog", ChatRoomFontSize, 1065, 66, 928, 835);
-		ElementPosition("InputChat", 1490, 950, 860, 82);
-       // return;
-        } else if (showhide == 0) {
-        ElementPositionFix("TextAreaChatLog", ChatRoomFontSize, 1005, 66, 988, 835);
-		ElementPosition("InputChat", 1456, 950, 900, 82);
-        }
-             }
-               //   next(args);
+                if (
+                    CharacterGetCurrent() == null &&
+                    CurrentScreen == "ChatRoom" &&
+                    document.getElementById("InputChat") &&
+                    document.getElementById("TextAreaChatLog")
+                ) {
+                    if (showhide == 1) {
+                        ElementPositionFix("TextAreaChatLog", ChatRoomFontSize, 1065, 66, 928, 835);
+                        ElementPosition("InputChat", 1490, 950, 860, 82);
+                        // return;
+                    } else if (showhide == 0) {
+                        ElementPositionFix("TextAreaChatLog", ChatRoomFontSize, 1005, 66, 988, 835);
+                        ElementPosition("InputChat", 1456, 950, 900, 82);
+                    }
+                }
+                //   next(args);
             });
+    }
 
-
-        }
     function settoyu_vulv(power) {
-    let C2 = ChatRoomCharacter.find((a) => a.MemberNumber === Number(tsyn));
-       if (typeof C2 !== "undefined") {
-    let OptionGroup = VibratorModeOptions['Standard'];
-   let Option = OptionGroup[power];
-      let intensity_item = C2.Appearance.find((a) => a.Asset.Group.Name === "ItemVulva");
+        let C2 = ChatRoomCharacter.find((a) => a.MemberNumber === Number(tsyn));
+        if (typeof C2 !== "undefined") {
+            let OptionGroup = VibratorModeOptions['Standard'];
+            let Option = OptionGroup[power];
+            let intensity_item = C2.Appearance.find((a) => a.Asset.Group.Name === "ItemVulva");
 
-      if (typeof intensity_item !== "undefined") {
-        if (intensity_item.Asset.AllowEffect?.includes("Vibrating")){
-      let OldIntensity1 = intensity_item.Property.Intensity;
-         VibratorModeSetProperty(intensity_item, Option.Property);
-    VibratorModePublish(C2, intensity_item, OldIntensity1, power-1);
-    CharacterRefresh(C2);
- ChatRoomCharacterItemUpdate(C2, 'ItemVulva');
-    }
-      }
-     }else if (typeof C2 == "undefined" && remoteplay == 1){
+            if (typeof intensity_item !== "undefined") {
+                if (intensity_item.Asset.AllowEffect?.includes("Vibrating")) {
+                    let OldIntensity1 = intensity_item.Property.Intensity;
+                    VibratorModeSetProperty(intensity_item, Option.Property);
+                    VibratorModePublish(C2, intensity_item, OldIntensity1, power - 1);
+                    CharacterRefresh(C2);
+                    ChatRoomCharacterItemUpdate(C2, 'ItemVulva');
+                }
+            }
+        } else if (typeof C2 == "undefined" && remoteplay == 1) {
 
-     	ServerSend("AccountBeep",  {"MemberNumber": Number(tsyn),
-	"BeepType": "BRC_Remote",
-	"Message": "BRC_Remote_Play,ItemVulva,"+power
-		}
-      );
-     }
+            ServerSend("AccountBeep", {
+                "MemberNumber": Number(tsyn),
+                "BeepType": "BRC_Remote",
+                "Message": "BRC_Remote_Play,ItemVulva," + power
+            });
+        }
     }
 
- function settoyu_butt(power) {
-    let C2 = ChatRoomCharacter.find((a) => a.MemberNumber === Number(tsyn));
-    if (typeof C2 !== "undefined"){
-    let OptionGroup = VibratorModeOptions['Standard'];
-   let Option = OptionGroup[power];
-      let intensity_item = C2.Appearance.find((a) => a.Asset.Group.Name === "ItemButt");
-      if (typeof intensity_item !== "undefined") {
-         if (intensity_item.Asset.AllowEffect?.includes("Vibrating")){
-      let OldIntensity1 = intensity_item.Property.Intensity;
-    VibratorModeSetProperty(intensity_item, Option.Property);
-    VibratorModePublish(C2, intensity_item, OldIntensity1, power-1);
-    CharacterRefresh(C2);
-    ChatRoomCharacterItemUpdate(C2, 'ItemButt');
-    }
-  }
-   } else if (typeof C2 == "undefined" && remoteplay == 1){
-     	ServerSend("AccountBeep",  {"MemberNumber": Number(tsyn),
-	"BeepType": "BRC_Remote",
-	"Message": "BRC_Remote_Play,ItemButt,"+power
-		}
-      );
-     }
+    function settoyu_butt(power) {
+        let C2 = ChatRoomCharacter.find((a) => a.MemberNumber === Number(tsyn));
+        if (typeof C2 !== "undefined") {
+            let OptionGroup = VibratorModeOptions['Standard'];
+            let Option = OptionGroup[power];
+            let intensity_item = C2.Appearance.find((a) => a.Asset.Group.Name === "ItemButt");
+            if (typeof intensity_item !== "undefined") {
+                if (intensity_item.Asset.AllowEffect?.includes("Vibrating")) {
+                    let OldIntensity1 = intensity_item.Property.Intensity;
+                    VibratorModeSetProperty(intensity_item, Option.Property);
+                    VibratorModePublish(C2, intensity_item, OldIntensity1, power - 1);
+                    CharacterRefresh(C2);
+                    ChatRoomCharacterItemUpdate(C2, 'ItemButt');
+                }
+            }
+        } else if (typeof C2 == "undefined" && remoteplay == 1) {
+            ServerSend("AccountBeep", {
+                "MemberNumber": Number(tsyn),
+                "BeepType": "BRC_Remote",
+                "Message": "BRC_Remote_Play,ItemButt," + power
+            });
+        }
     };
 
 
-    function settplayer_vulv(power){
-       
-   let OptionGroup = VibratorModeOptions['Standard'];
-         let Option = OptionGroup[power];
-      let intensity_item = Player.Appearance.find((a) => a.Asset.Group.Name == "ItemVulva");
+    function settplayer_vulv(power) {
+
+        let OptionGroup = VibratorModeOptions['Standard'];
+        let Option = OptionGroup[power];
+        let intensity_item = Player.Appearance.find((a) => a.Asset.Group.Name == "ItemVulva");
         if (typeof intensity_item !== "undefined") {
-        if (intensity_item.Asset.AllowEffect?.includes("Vibrating")){
-       let OldIntensity1 = intensity_item.Property.Intensity;
-        let nickname = CharacterNickname(Player);
-        let assetname = intensity_item.Asset.Description.toLowerCase();
-       if (OldIntensity1 != power-1){
-         VibratorModeSetProperty(intensity_item, Option.Property);
-    VibratorModePublish(Player, intensity_item, OldIntensity1, power-1);
-    CharacterRefresh(Player);
- ChatRoomCharacterItemUpdate(Player, 'ItemVulva');
-  //  var Direction = power-1 > OldIntensity1 ? "Increase" : "Decrease";
-    var powertext = {
-        0: nickname + "'s " + assetname + " is remotely controlled and stops vibrating.",
-        1:  nickname + "'s " + assetname + " is remotely controlled and set to low.",
-        2:  nickname + "'s " + assetname + " is remotely controlled and set to medium.",
-        3:  nickname + "'s " + assetname + " is remotely controlled and set to high.",
-        4:  nickname + "'s " + assetname + " is remotely controlled and set to max."
+            if (intensity_item.Asset.AllowEffect?.includes("Vibrating")) {
+                let OldIntensity1 = intensity_item.Property.Intensity;
+                let nickname = CharacterNickname(Player);
+                let assetname = intensity_item.Asset.Description.toLowerCase();
+                if (OldIntensity1 != power - 1) {
+                    VibratorModeSetProperty(intensity_item, Option.Property);
+                    VibratorModePublish(Player, intensity_item, OldIntensity1, power - 1);
+                    CharacterRefresh(Player);
+                    ChatRoomCharacterItemUpdate(Player, 'ItemVulva');
+                    //  var Direction = power-1 > OldIntensity1 ? "Increase" : "Decrease";
+                    var powertext = {
+                        0: nickname + "'s " + assetname + " is remotely controlled and stops vibrating.",
+                        1: nickname + "'s " + assetname + " is remotely controlled and set to low.",
+                        2: nickname + "'s " + assetname + " is remotely controlled and set to medium.",
+                        3: nickname + "'s " + assetname + " is remotely controlled and set to high.",
+                        4: nickname + "'s " + assetname + " is remotely controlled and set to max."
+                    }
+                    // console.log (powertext[power]);
+                    if (CurrentScreen == "ChatRoom") {
+                        ServerSend("ChatRoomChat", {
+                            Content: "BRC_Remoteplay",
+                            Type: "Action",
+                            Target: null,
+                            Dictionary: [{
+                                Tag: "MISSING PLAYER DIALOG: BRC_Remoteplay",
+                                Text: powertext[power]
+                            }]
+                        });
+                    }
+                }
+            }
         }
-       // console.log (powertext[power]);
-           if (CurrentScreen == "ChatRoom") {
-     ServerSend("ChatRoomChat", {Content: "BRC_Remoteplay",Type: "Action",Target: null,Dictionary: [{ Tag: "MISSING PLAYER DIALOG: BRC_Remoteplay", Text: powertext[power] }]});
-           }
-  }
-        }}
     };
 
-       function settplayer_butt(power){
-      let OptionGroup = VibratorModeOptions['Standard'];
-     let Option = OptionGroup[power];
-      let intensity_item = Player.Appearance.find((a) => a.Asset.Group.Name == "ItemButt");
-           if (typeof intensity_item !== "undefined") {
-             if (intensity_item.Asset.AllowEffect?.includes("Vibrating")){
-       let OldIntensity1 = intensity_item.Property.Intensity;
-        let nickname = CharacterNickname(Player);
-        let assetname = intensity_item.Asset.Description.toLowerCase();
-       if (OldIntensity1 != power-1){
-         VibratorModeSetProperty(intensity_item, Option.Property);
-    VibratorModePublish(Player, intensity_item, OldIntensity1, power-1);
-    CharacterRefresh(Player);
- ChatRoomCharacterItemUpdate(Player, 'ItemButt');
-  //  var Direction = power-1 > OldIntensity1 ? "Increase" : "Decrease";
-    var powertext = {
-        0: nickname + "'s " + assetname + " is remotely controlled and stops vibrating.",
-        1:  nickname + "'s " + assetname + " is remotely controlled and set to low.",
-        2:  nickname + "'s " + assetname + " is remotely controlled and set to medium.",
-        3:  nickname + "'s " + assetname + " is remotely controlled and set to high.",
-        4:  nickname + "'s " + assetname + " is remotely controlled and set to max."
+    function settplayer_butt(power) {
+        let OptionGroup = VibratorModeOptions['Standard'];
+        let Option = OptionGroup[power];
+        let intensity_item = Player.Appearance.find((a) => a.Asset.Group.Name == "ItemButt");
+        if (typeof intensity_item !== "undefined") {
+            if (intensity_item.Asset.AllowEffect?.includes("Vibrating")) {
+                let OldIntensity1 = intensity_item.Property.Intensity;
+                let nickname = CharacterNickname(Player);
+                let assetname = intensity_item.Asset.Description.toLowerCase();
+                if (OldIntensity1 != power - 1) {
+                    VibratorModeSetProperty(intensity_item, Option.Property);
+                    VibratorModePublish(Player, intensity_item, OldIntensity1, power - 1);
+                    CharacterRefresh(Player);
+                    ChatRoomCharacterItemUpdate(Player, 'ItemButt');
+                    //  var Direction = power-1 > OldIntensity1 ? "Increase" : "Decrease";
+                    var powertext = {
+                        0: nickname + "'s " + assetname + " is remotely controlled and stops vibrating.",
+                        1: nickname + "'s " + assetname + " is remotely controlled and set to low.",
+                        2: nickname + "'s " + assetname + " is remotely controlled and set to medium.",
+                        3: nickname + "'s " + assetname + " is remotely controlled and set to high.",
+                        4: nickname + "'s " + assetname + " is remotely controlled and set to max."
+                    }
+                    //  console.log (powertext[power]);
+                    if (CurrentScreen == "ChatRoom") {
+                        ServerSend("ChatRoomChat", {
+                            Content: "BRC_Remoteplay",
+                            Type: "Action",
+                            Target: null,
+                            Dictionary: [{
+                                Tag: "MISSING PLAYER DIALOG: BRC_Remoteplay",
+                                Text: powertext[power]
+                            }]
+                        });
+                    }
+                }
+            }
         }
-      //  console.log (powertext[power]);
-           if (CurrentScreen == "ChatRoom") {
-     ServerSend("ChatRoomChat", {Content: "BRC_Remoteplay",Type: "Action",Target: null,Dictionary: [{ Tag: "MISSING PLAYER DIALOG: BRC_Remoteplay", Text: powertext[power] }]});
-           }
-  }
-             }}
     };
 
-modApi.hookFunction("ServerAccountBeep", 4, (args, next) => {
-  const data = args[0];
+    modApi.hookFunction("ServerAccountBeep", 4, (args, next) => {
+        const data = args[0];
 
-   if (typeof data.Message !== "undefined" && data.BeepType == "BRC_Remote") {
-   if (data.Message.includes ("BRC_Remote_Play")){
-       if (remoteplay = 1){
-      let splitarray = data.Message.split (",")
+        if (typeof data.Message !== "undefined" && data.BeepType == "BRC_Remote") {
+            if (data.Message.includes("BRC_Remote_Play")) {
+                if (remoteplay = 1) {
+                    let splitarray = data.Message.split(",")
 
-       if (splitarray[1] == "ItemVulva" && splitarray[2] >= 0 && splitarray[2] <= 4){
-        //     console.log (data);
-           settplayer_vulv (Number(splitarray[2]));
-      } else if (splitarray[1] == "ItemButt" && splitarray[2] >= 0 && splitarray[2] <= 4){
-         settplayer_butt (Number(splitarray[2]));
-       }
-       }
-   }
-   }
-next(args);
-});
+                    if (splitarray[1] == "ItemVulva" && splitarray[2] >= 0 && splitarray[2] <= 4) {
+                        //     console.log (data);
+                        settplayer_vulv(Number(splitarray[2]));
+                    } else if (splitarray[1] == "ItemButt" && splitarray[2] >= 0 && splitarray[2] <= 4) {
+                        settplayer_butt(Number(splitarray[2]));
+                    }
+                }
+            }
+        }
+        next(args);
+    });
 
-
-  async function waitFor(func, cancelFunc = () => false) {
-    while (!func()) {
-      if (cancelFunc()) return false;
-      await sleep(10);
+    async function waitFor(func, cancelFunc = () => false) {
+        while (!func()) {
+            if (cancelFunc()) return false;
+            await sleep(10);
+        }
+        return true;
     }
-    return true;
-  }
 
-  function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
+    function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
 
+    //handles help commands
+    async function BRCCommands() {
+        await waitFor(() => !!CommandCombine);
 
-     //handles help commands
- async function BRCCommands() {
-	await waitFor(() => !!CommandCombine);
+        var modCommands = [{
+                Tag: "syncto",
+                Description: "Sync Control to Member number",
+                Action: args => {
+                    Commandsyncto(args.split(" "));
+                }
+            },
+            {
+                Tag: "brc",
+                Description: "Better Remmote Control Settings",
+                Action: args => {
+                    CommandHelp(args.split(" "));
+                }
+            }
+        ];
+        CommandCombine(modCommands);
+    }
 
-	var modCommands = [
-	  {
-		Tag: "syncto",
-		Description: "Sync Control to Member number",
-		Action: args => {
-		  //can prob put case here
-		  Commandsyncto(args.split(" "));
-		}
-	  },
-      	  {
-		Tag: "brc",
-		Description: "Better Remmote Control Settings",
-		Action: args => {
-		  //can prob put case here
-		  CommandHelp(args.split(" "));
-		}
-	  }
-
-
-	  ];
-	CommandCombine(modCommands);
-  }
-
-  function CommandHelp(argsList)
-  {
-  let d = argsList[0];
-  switch (d) {
-  case "":
-  ChatRoomSendLocal("<b>Better Remmote Control Help</b>\n"+
+    function CommandHelp(argsList) {
+        let d = argsList[0];
+        switch (d) {
+            case "":
+                ChatRoomSendLocal("<b>Better Remmote Control Help</b>\n" +
                     "<i>/syncto (Member Number)</i>: Syncs the controller to Member.\n" +
-					"<i>/brc show</i>: Shows remote control.\n" +
+                    "<i>/brc show</i>: Shows remote control.\n" +
                     "<i>/brc hide</i>: Hides remote control.\n" +
                     "<i>/brc remoteplay</i>: Toggles remote play on and off.\n"
-				   );
-  break;
-  case "show":
-  ChatRoomSendLocal("BRC - will now be shown ");
-showhide = 1;
-        ElementPositionFix("TextAreaChatLog", ChatRoomFontSize, 1065, 66, 928, 835);
-		ElementPosition("InputChat", 1490, 950, 860, 82);
+                );
+                break;
+            case "show":
+                ChatRoomSendLocal("BRC - will now be shown ");
+                showhide = 1;
+                ElementPositionFix("TextAreaChatLog", ChatRoomFontSize, 1065, 66, 928, 835);
+                ElementPosition("InputChat", 1490, 950, 860, 82);
 
-  break;
+                break;
             case "hide":
-  ChatRoomSendLocal("BRC - will now be hidden ");
-showhide = 0;
-                  ElementPositionFix("TextAreaChatLog", ChatRoomFontSize, 1005, 66, 988, 835);
-		ElementPosition("InputChat", 1456, 950, 900, 82);
+                ChatRoomSendLocal("BRC - will now be hidden ");
+                showhide = 0;
+                ElementPositionFix("TextAreaChatLog", ChatRoomFontSize, 1005, 66, 988, 835);
+                ElementPosition("InputChat", 1456, 950, 900, 82);
 
-  break;
-          case "remoteplay":
-          if (remoteplay == 0){
-                ChatRoomSendLocal("BRC - Remote Play Enabled");
-              //switch on
-              remoteplay = 1;
-          } else if (remoteplay == 1) {
-              ChatRoomSendLocal("BRC - Remote Play Disabled");
-              //switch off
-          remoteplay = 0;
-          };
+                break;
+            case "remoteplay":
+                if (remoteplay == 0) {
+                    ChatRoomSendLocal("BRC - Remote Play Enabled");
+                    //switch on
+                    remoteplay = 1;
+                } else if (remoteplay == 1) {
+                    ChatRoomSendLocal("BRC - Remote Play Disabled");
+                    //switch off
+                    remoteplay = 0;
+                };
 
-  break;
+                break;
 
-  }
-  };
-  function Commandsyncto(argsList)
-  {
-  let d = argsList[0];
-  switch (d) {
-  case "":
-  ChatRoomSendLocal("<b>To Sync controls with user use /synto (Member number) </b>\n"+
-					"example : /syncto 123456"
-				   );
-  break;
-      default:
-  ChatRoomSendLocal("Syncing Remote to : " + d);
-          tsyn = d
-  break;
-  }
-  };
+        }
+    };
+
+    function Commandsyncto(argsList) {
+        let d = argsList[0];
+        switch (d) {
+            case "":
+                ChatRoomSendLocal("<b>To Sync controls with user use /synto (Member number) </b>\n" +
+                    "example : /syncto 123456"
+                );
+                break;
+            default:
+                ChatRoomSendLocal("Syncing Remote to : " + d);
+                tsyn = d
+                break;
+        }
+    };
 
 };
 BRC_Main();
