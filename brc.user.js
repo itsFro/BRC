@@ -343,7 +343,7 @@ function CommandHelp(argsList) {
                 "<i>/brc show</i>: Shows remote control.\n" +
                 "<i>/brc hide</i>: Hides remote control.\n" +
                 "<i>/brc remoteplay</i>: Toggles remote play on and off.\n" +
-                "<i>/bcr publish</i>: list more options on publish"
+                "<i>/brc publish</i>: list more options on publish"
             );
             break;
 
