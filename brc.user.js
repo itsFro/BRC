@@ -444,7 +444,6 @@ async function BRC_Main() {
         let d = argsList[0];
         let d2 = argsList[1];
 
-<<<<<<< Updated upstream
     switch (d) {
         case "":
             ChatRoomSendLocal("<b>Better Remmote Control Help</b>\n" +
@@ -455,18 +454,6 @@ async function BRC_Main() {
                 "<i>/brc publish</i>: list more options on publish"
             );
             break;
-=======
-        switch (d) {
-            case "":
-                ChatRoomSendLocal("<b>Better Remmote Control Help</b>\n" +
-                    "<i>/syncto (Member Number)</i>: Syncs the controller to Member.\n" +
-                    "<i>/brc show</i>: Shows remote control.\n" +
-                    "<i>/brc hide</i>: Hides remote control.\n" +
-                    "<i>/brc remoteplay</i>: Toggles remote play on and off.\n" +
-                    "<i>/brc publish</i>: list more options on publish"
-                );
-                break;
->>>>>>> Stashed changes
 
             case "show":
                 ChatRoomSendLocal("BRC - will now be shown ");
