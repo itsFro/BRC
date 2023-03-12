@@ -14,7 +14,7 @@ javascript:(()=>{fetch('https://itsfro.github.io/BRC/brcLoader.user.js').then(r=
 
 *`/syncto (Member Number)`* - Syncs the controlls to the member
 
-*`/brc list`* - available commands in game.
+*`/brc`* - list available commands in game.
 
 *`/brc show`* - shows remote contols.
 
