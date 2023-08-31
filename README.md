@@ -1,5 +1,7 @@
 # Better Remote Control for Bondage Club
 
+NOTE: This code is out of date and probably no longer works 
+
 BRC is a script for Bondage Club that improves the UI for controlling toys in game.
 
 ## Installation
